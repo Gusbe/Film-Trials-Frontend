@@ -25,6 +25,7 @@ class App extends Component {
             <PrivateRoute path="/location/add" component={AddLocation} exact/>
             <Route path="/location/:id" component={ViewLocation}  />
             <Route path="/search/:id" component={Search}  />
+            <Route path="/search" component={Search}  />
             {/* <PrivateRoute path="/private" component={Private} /> */}
           </Switch>
         </div>
