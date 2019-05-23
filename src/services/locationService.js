@@ -11,6 +11,10 @@ class LocationService {
 
   }
 
+  view(id) {
+    return this.location.get('/location/' + id)
+      .then(({ data }) => data)
+  }
 
   add(location) {
     return this.location.post('/location/add', location)
