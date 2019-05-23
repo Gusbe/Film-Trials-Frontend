@@ -6,6 +6,8 @@ import Navbar from './components/Navbar';
 import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import AddLocation from './pages/AddLocation';
+import ViewLocation from './pages/ViewLocation';
 import AuthProvider from './providers/AuthProvider';
 
 
@@ -14,12 +16,13 @@ class App extends Component {
     return (
       <AuthProvider>
         <div className="container">
-          <h1>Module 3 boilerplate</h1>
           <Navbar />
           <Switch>
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
-            <PrivateRoute path="/private" component={Private} />
+            <PrivateRoute path="/location/add" component={AddLocation}/>
+            <AnonRoute path="/location/:id" component={ViewLocation} />
+            {/* <PrivateRoute path="/private" component={Private} /> */}
           </Switch>
         </div>
       </AuthProvider>
