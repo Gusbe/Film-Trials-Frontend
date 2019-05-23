@@ -11,7 +11,8 @@ class ViewLocation extends Component {
       title: '',
       lat: '',
       lon: '',
-      scenePictureUrl: ''
+      scenePictureUrl: '',
+      author: ''
     }
 
   }
@@ -21,13 +22,14 @@ class ViewLocation extends Component {
     locationService.view(id)
     .then((location) => {
       
-      const { _id, scenePictureUrl, title, coords } = location;
+      const { _id, scenePictureUrl, title, coords, user } = location;
       this.setState({
         id: _id,
         title,
         lat: coords.coordinates[1],
         lon: coords.coordinates[0],
-        scenePictureUrl
+        scenePictureUrl,
+        author: user.username
       })
     })
   }
@@ -39,6 +41,7 @@ class ViewLocation extends Component {
         <img src={this.state.scenePictureUrl} alt={this.state.title}/>
         <p>Lon: {this.state.lon}</p>
         <p>Lat: {this.state.lat}</p>
+        <p>Author: {this.state.author}</p>
       </div>
     );
   }
