@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withAuth } from '../providers/AuthProvider';
 
-import locationService from './../services/locationService';
+import locationService from '../lib/locationService';
 
 class AddLocation extends Component {
 
@@ -64,23 +64,23 @@ class AddLocation extends Component {
   }
 
   render() {
-      return (
-        <form onSubmit={this.handleFormSubmit}>
-        <label>Title:</label>
+    return (
+      <form onSubmit={this.handleFormSubmit}>
+        <label name="title">Title:</label>
         <input type="text" name="title" value={this.state.title} onChange={this.handleChange} />
-        <label>Lon:</label>
+        <label name="lon">Lon:</label>
         <input type="text" name="lon" value={this.state.lon} onChange={this.handleChange} />
-        <label>Lat:</label>
+        <label name="lat">Lat:</label>
         <input type="text" name="lat" value={this.state.lat} onChange={this.handleChange} />
-        
-        
-        <label>Image</label>
-        <input type="file" onChange={this.fileOnchange}></input>
-        
+
+
+        <label name="image">Image</label>
+        <input type="file" onChange={this.fileOnchange} name="image"/>
+
         {this.state.disable ? <input type="submit" disabled></input> : <input type="submit"></input>}
 
-        </form >
-      );
+      </form >
+    );
   }
 }
 

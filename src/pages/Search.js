@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
-import locationService from './../services/locationService';
+
+import locationService from '../lib/locationService';
 import Searcher from './../components/Searcher';
 import ResultList from './../components/ResultList';
 
@@ -12,29 +12,36 @@ class Search extends Component {
     super(props);
 
     this.state = {
-      results: []
+      results: [],
+      searchParams: {
+        lat: 0,
+        lon: 0,
+        dist: 0
+      }
     }
 
   }
 
   componentDidMount(){
-    
-    const searchParams = {
-      lat : 42,
-      lon : 2,
-      dist : 150000
-    }
 
+    // locationService.search(this.state.searchParams)
+    //   .then( (results) => {
+    //     this.setState({results});
+    //   })
+  }
+
+
+  launchSearch = (searchParams) => {
     locationService.search(searchParams)
-      .then( (results) => {
-        this.setState({results});
+      .then((results) => {
+        this.setState( { searchParams, results });
       })
   }
 
   render(){    
     return (
       <div>
-        <Searcher />
+        <Searcher launchSearch={this.launchSearch} />
         <ResultList results={this.state.results}/>
       </div>
     );

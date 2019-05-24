@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import locationService from './../services/locationService';
+import locationService from '../lib/locationService';
+import {withAuth} from '../providers/AuthProvider';
 
 class ViewLocation extends Component {
 
@@ -17,7 +18,6 @@ class ViewLocation extends Component {
       author: '',
       owner: false
     }
-
   }
 
   componentDidMount(){
@@ -29,7 +29,7 @@ class ViewLocation extends Component {
       const { _id, scenePictureUrl, title, coords, user } = location;
 
       let ownerState;
-      if(true){ //TODO: Check if the user in the current session is the same user owner of the location
+      if(this.props.user._id === user._id){
         ownerState = true;  
       }
 
@@ -47,15 +47,15 @@ class ViewLocation extends Component {
 
   render(){    
     return (
-      <div>
+      <>
         <h2>{this.state.title}</h2>
         <img src={this.state.scenePictureUrl} alt={this.state.title}/>
         <p>Lon: {this.state.lon}</p>
         <p>Lat: {this.state.lat}</p>
         <p>Author: {this.state.author}</p>
-        {this.state.owner ? <Link to={'/location/' + this.state.id + '/update'}>Update</Link> : <p />}
-        {this.state.owner ? <Link to={'/location/' + this.state.id + '/delete'}>Delete</Link> : <p />}
-      </div>
+        {this.state.owner ? <Link to={'/location/' + this.state.id + '/update'}>Update</Link> : null}
+        {this.state.owner ? <Link to={'/location/' + this.state.id + '/delete'}>Delete</Link> : null}
+      </>
     );
   }
 
@@ -63,4 +63,4 @@ class ViewLocation extends Component {
 }
 
 
-export default ViewLocation;
+export default withAuth(ViewLocation);

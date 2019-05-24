@@ -27,7 +27,8 @@ class LocationService {
   }
 
   search(searchParams) {
-    
+    console.log(`launching search------>`);
+    console.log(searchParams);
     return this.location.get('/search/?lon=' + searchParams.lon + '&lat=' + searchParams.lat + '&dist=' + searchParams.dist)
     .then(({ data }) => data)
   }
