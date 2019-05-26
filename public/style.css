@@ -121,6 +121,11 @@ h1 {
   margin-top: 20px;
 }
 
+.signup-page {
+  margin-top: 35px;
+  border: 1px solid transparent;
+}
+
 .signup-link {
   text-decoration: none;
   color: rgb(210,56,31);
@@ -168,6 +173,8 @@ h1 {
 
 /* ---- typography ---- */
 
-
+p {
+  margin: 0;
+}
 
 

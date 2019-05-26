@@ -29,23 +29,40 @@ class Signup extends Component {
     this.setState({[name]: value});
   }
 
+  removePlaceholder = (e) => e.target.placeholder = "";
+  addPlaceholderUsername = (e) => e.target.placeholder = "Username";
+  addPlaceholderPassword = (e) => e.target.placeholder = "Password";
+
   render() {
     const { username, password } = this.state;
     return (
-      <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange}/>
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
-          <input type="submit" value="Signup" />
-        </form>
-
-        <p>Already have account? 
-          <Link to={"/login"}> Login</Link>
-        </p>
-
-      </div>
+        <div className='signup-page'>
+          <div className="background"></div>
+          <div className='form-box'>
+            <form onSubmit={this.handleFormSubmit}>
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                onFocus={this.removePlaceholder} 
+                onBlur={this.addPlaceholderUsername}
+                value={username}
+                onChange={this.handleChange}
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                onFocus={this.removePlaceholder} 
+                onBlur={this.addPlaceholderPassword}
+                value={password}
+                onChange={this.handleChange}
+              />
+              <input id='form-button' type="submit" value="Signup" />
+              <Link className='signup-link' to='/login'>Already have an account? Login.</Link>
+            </form>
+          </div>
+        </div>
     )
   }
 }
