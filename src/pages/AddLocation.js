@@ -27,8 +27,7 @@ class AddLocation extends Component {
         latitude: null,
         longitude: null
       },
-      savePosition: null,
-      disable: true
+      savePosition: null
     }
   }
 
@@ -115,13 +114,10 @@ class AddLocation extends Component {
   }
 
   componentDidUpdate() {
-    console.log("CHECKING...");
     if(!this.controlButton() && this.state.disable){
-      console.log('Canvio a enable!');
       this.setState({disable: false});
     }
     else if(this.controlButton() && !this.state.disable){
-      console.log('Canvio a disable!');
       this.setState({disable: true});
     }
   }
