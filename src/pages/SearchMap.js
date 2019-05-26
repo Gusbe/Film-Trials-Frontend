@@ -116,7 +116,7 @@ class SearchMap extends Component {
                   this.setState({ selectedLocation: Location })
                 }}
               >
-                <img src='./img/pin.png' alt='pin' style={{ width: '16px' }} />
+                <img src='/img/pin.png' alt='pin' style={{ width: '16px' }} />
               </div>
 
             </Marker>
@@ -131,7 +131,7 @@ class SearchMap extends Component {
             offsetTop={-10}
           >
             <div>
-              <img src='./img/blue.svg' alt='currentPosition' style={{ width: '20px' }} />
+              <img src='/img/blue.svg' alt='currentPosition' style={{ width: '20px' }} />
             </div>
           </Marker>
           ) : null}
