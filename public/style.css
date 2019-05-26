@@ -198,10 +198,47 @@ h3 {
   margin-top: 20px;
 }
 
+.view-page {
+  margin-top: 35px;
+}
 
+.view-map {
+  height: 150px;
+}
 
+.view-title {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  text-align: center;
+}
 
+.view-title h1{
+  font-size: 32px;
+  font-family: Arial, sans-serif;
+  color: rgb(74, 74, 74);
+}
 
+.view-image img{
+  /* margin: 20px 20px 20px 20px; */
+  height: auto;
+  width: 100%;
+}
+
+.view-image p{
+  text-align: right;
+  margin-right: 20px;
+  font-size: 12px;
+}
+
+.view-links {
+  text-align: center;
+}
+
+.view-links-component {
+  margin: 20px 20px 80px 20px;
+  color: rgb(74, 74, 74);
+}
 
 
 
