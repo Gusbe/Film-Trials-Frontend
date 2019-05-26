@@ -6,6 +6,7 @@ import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
 import AuthProvider from './providers/AuthProvider';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import AddLocation from './pages/AddLocation';
@@ -31,6 +32,7 @@ class App extends Component {
             <Route path="/search/:id" component={Search}  />
             <Route path="/search-map" component={SearchMap}  />
           </Switch>
+          <Footer />
         </div>
       </AuthProvider>
     )

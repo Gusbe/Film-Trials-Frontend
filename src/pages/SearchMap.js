@@ -17,7 +17,7 @@ class SearchMap extends Component {
         bearing: 0,
         pitch: 0,
         width: '100vp',
-        height: 500,
+        height: 1500,
       },
       currentPosition: {
         latitude: null,

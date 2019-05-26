@@ -10,6 +10,9 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background-color:rgba(210, 55, 31, 0.023);
+  font-family: Arial, sans-serif;
+  line-height: 147%;
 }
 
 .navbar {
@@ -28,7 +31,7 @@ body {
 }
 
 .logo img {
-  margin: 5px 2px 0 5px;
+  margin: 5px 10px 0 10px;
   height: 25px;
 }
 
@@ -37,6 +40,7 @@ h1 {
   font-family: 'Patua One', cursive;
   font-size: 20px;
   margin-top: 8px;
+  letter-spacing: 1px;
 }
 
 .login {
@@ -63,50 +67,107 @@ h1 {
   margin-left: 5px;
 }
 
-.link-nav{
+.link-nav {
   color: white;
   font-size: 15px;
   text-decoration: none;
 }
 
-.loginPage{
-  margin: 35px 10px 0px 10px;
-  border: solid 1px blue;
+.login-page {
+  margin-top: 35px;
+  border: 1px solid transparent;
 }
 
-.loginPage form{
+.background {
+  background-image: url('/img/background.jpg');
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  background-size: 200%;
+  height: 100%;
+  filter: blur(5px);
+}
+
+.form-box {
+  margin: 100px auto;
+  text-align: center;
+  width: 360px;
+  padding: 50px 4% 4% 4%;
+  background-color: white;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0);
+}
+
+.form-box form {
   display: flex;
   flex-direction: column;
-  margin: 100px 20px 0px 20px;
+}
 
+.form-box input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 12px;
+}
 
-  border: solid 1px green;
+#form-button {
+  background: rgb(210,56,31);
+  color: white;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.signup-link {
+  text-decoration: none;
+  color: rgb(210,56,31);
+  font-size: 12px;
+  text-align: center;
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer {
+  background-color:rgb(210,56,31);
+  position:fixed;
+  bottom:0;
+  width:100%;
+  z-index:100;
+  display: flex;
+  justify-content: space-evenly;
+  height: 35px;
+}
+
+.footer img {
+  height: 25px;
+  margin-right: 5px;
+}
 
 
 
 .search-map{
   margin-top: 35px;
-  border: solid 2px blue;
+
 }
 
 /* ---- typography ---- */
 
-body {
-  color: #111;
-  font-family: Arial, sans-serif;
-  line-height: 147%;
-}
 
-
-h2 {}
-
-h3 {}
-
-p {
-  margin: 0;
-}
 
 
