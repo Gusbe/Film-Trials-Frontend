@@ -1,0 +1,112 @@
+/* ---- reset ---- */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color:rgb(210,56,31);
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:100;
+  display: flex;
+  justify-content: space-between;
+  height: 35px; 
+}
+
+.logo{
+  display:flex;
+}
+
+.logo img {
+  margin: 5px 2px 0 5px;
+  height: 25px;
+}
+
+h1 {
+  color: white;
+  font-family: 'Patua One', cursive;
+  font-size: 20px;
+  margin-top: 8px;
+}
+
+.login {
+  margin-top: 7px;
+  margin-right: 10px;
+  color: white;
+}
+
+.login img {
+  height: 25px;
+  margin-right: 5px;
+}
+
+.logout {
+  margin-top: 7px;
+  margin-right: 10px;
+  color: white;
+  font-weight: bolder;
+}
+
+.logout img {
+  height: 15px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.link-nav{
+  color: white;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.loginPage{
+  margin: 35px 10px 0px 10px;
+  border: solid 1px blue;
+}
+
+.loginPage form{
+  display: flex;
+  flex-direction: column;
+  margin: 100px 20px 0px 20px;
+
+
+  border: solid 1px green;
+}
+
+
+
+
+
+.search-map{
+  margin-top: 35px;
+  border: solid 2px blue;
+}
+
+/* ---- typography ---- */
+
+body {
+  color: #111;
+  font-family: Arial, sans-serif;
+  line-height: 147%;
+}
+
+
+h2 {}
+
+h3 {}
+
+p {
+  margin: 0;
+}
+
+

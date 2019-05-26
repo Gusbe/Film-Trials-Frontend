@@ -16,7 +16,7 @@ class SearchMap extends Component {
         zoom: 10,
         bearing: 0,
         pitch: 0,
-        width: 500,
+        width: '100vp',
         height: 500,
       },
       currentPosition: {
@@ -91,8 +91,8 @@ class SearchMap extends Component {
     const { viewport, selectedLocation } = this.state;
 
     return (
-      <>
-        <button onClick={this.locateUser}>CURRENT LOCATION</button>
+      <div className="search-map">
+        
         <ReactMapGL
           {...viewport}
           mapboxApiAccessToken={process.env.REACT_APP_MAP_TOKEN}
@@ -149,8 +149,8 @@ class SearchMap extends Component {
             </Popup>
           ) : null}
         </ReactMapGL>
-
-      </>
+        <button onClick={this.locateUser}>CURRENT LOCATION</button>
+      </div>
 
     );
   }
