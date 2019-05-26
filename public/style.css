@@ -13,6 +13,7 @@ body {
   background-color:rgba(210, 55, 31, 0.023);
   font-family: Arial, sans-serif;
   line-height: 147%;
+  color: rgb(74, 74, 74);
 }
 
 .navbar {
@@ -131,6 +132,70 @@ h1 {
   color: rgb(210,56,31);
   font-size: 12px;
   text-align: center;
+}
+
+.add-location-page {
+  margin-top: 35px;
+  padding-top: 15px;
+}
+
+.add-location {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+h2{
+  margin-left: 15px;
+}
+
+.get-location-button {
+  background: #f2f2f2;
+  color: black;
+  font-size: 12px;
+  height: 25px;
+  margin-top: 30px;
+}
+
+.add-map {
+  padding: 0 22px;
+}
+
+.add-form {
+  padding: 0 20px 50px 20px;
+}
+
+.lat-lon-inputs {
+  display: none;
+}
+
+.add-form input {
+  outline: 0;
+  background: #f2f2f2;
+  border: 1px solid #cdcdcd;
+  width: 100%;
+  margin: 0 0 22px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+
+h3 {
+  margin-top: 30px;
+}
+
+#add-button {
+  background: rgb(210,56,31);
+  color: white;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+#add-button-disabled {
+  background: rgba(210, 55, 31, 0.441);
+  color: rgb(101, 101, 101);
+  font-size: 16px;
+  margin-top: 20px;
 }
 
 
