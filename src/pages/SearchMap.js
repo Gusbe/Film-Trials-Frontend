@@ -3,15 +3,6 @@ import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 
 import locationService from '../lib/locationService';
 
-
-
-const navStyle = {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  padding: '10px'
-};
-
 class SearchMap extends Component {
 
   constructor(props) {
@@ -50,7 +41,7 @@ class SearchMap extends Component {
 
   componentDidUpdate() {
     if (this.state.lastSearch + 1000 < Date.now()) {
-      this.state.lastSearch = Date.now();
+      this.setState({lastSearch: Date.now()});
       this.launchSearch();
     }
   }
@@ -125,7 +116,7 @@ class SearchMap extends Component {
                   this.setState({ selectedLocation: Location })
                 }}
               >
-                <img src='./img/pin.png' style={{ width: '16px' }} />
+                <img src='./img/pin.png' alt='pin' style={{ width: '16px' }} />
               </div>
 
             </Marker>
@@ -140,7 +131,7 @@ class SearchMap extends Component {
             offsetTop={-10}
           >
             <div>
-              <img src='./img/blue.svg' style={{ width: '20px' }} />
+              <img src='./img/blue.svg' alt='currentPosition' style={{ width: '20px' }} />
             </div>
           </Marker>
           ) : null}
@@ -153,7 +144,7 @@ class SearchMap extends Component {
             >
               <div>
                 <h3>{selectedLocation.title}</h3>
-                <img src={selectedLocation.scenePictureUrl} style={{ width: '50px' }} />
+                <img src={selectedLocation.scenePictureUrl} alt='selectedLocation.title' style={{ width: '50px' }} />
               </div>
             </Popup>
           ) : null}
