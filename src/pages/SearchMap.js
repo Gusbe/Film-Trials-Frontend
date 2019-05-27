@@ -90,15 +90,13 @@ class SearchMap extends Component {
 
   render() {
     const { viewport, selectedLocation } = this.state;
-
+    const background = 'https://res.cloudinary.com/dslkk8z2m/image/upload/v1558967426/Film-Trails/laejr1op5ycwgxkq5atx.jpg';
     return (
       <div className="search-map-page">
-        <div className="current-location-button">
-          <button onClick={this.locateUser}>Current location</button>
-        </div>
-        <div className="location-info">
-          <img src='https://res.cloudinary.com/dslkk8z2m/image/upload/v1558967426/Film-Trails/laejr1op5ycwgxkq5atx.jpg'></img>
-          <p>Title</p>
+        <button className="current-location-button" onClick={this.locateUser}>Current location</button>
+        <div className="location-info" style={{backgroundImage: 'url(' + background + ')'}}>
+          <div className="close-location-inf"><img src="/img/close-window.png" alt="close"/></div>
+          <p>The lord of the rings</p>
         </div>
         <div className="search-map">
           <ReactMapGL
@@ -106,6 +104,7 @@ class SearchMap extends Component {
             mapboxApiAccessToken={process.env.REACT_APP_MAP_TOKEN}
             mapStyle='mapbox://styles/gusbe/cjw3cw74r0vw01cpiazy0w3f4'
             onViewportChange={this.changeView}
+
           >
 
 

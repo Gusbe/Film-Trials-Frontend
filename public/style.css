@@ -279,7 +279,7 @@ h3 {
 }
 
 .search-map {
-  z-index: -10;
+  height: 100vp;
 }
 
 .current-location-button {
@@ -295,20 +295,34 @@ h3 {
 }
 
 .location-info {
-  background: white;
-  border: 1px solid #bdbdbd;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0);
-  border-radius: 2px;
+  border-radius: 5px;
   position: absolute;
   bottom: 50px;
   right: 15px;
   left: 15px;
   z-index: 10;
-  width: 90%;
+  width: auto;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.location-info p {
+  background-color: white;
+  padding: 8px;
+  font-weight: bold;
 }
 
 .location-info img {
-  width: 100%;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
 }
 
 
