@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import locationService from '../lib/locationService';
 import {withAuth} from '../providers/AuthProvider';
 import ReactMapGL, { Marker } from 'react-map-gl';
@@ -30,7 +30,9 @@ class ViewLocation extends Component {
       currentPosition: {
         latitude: null,
         longitude: null
-      }
+      },
+      deleteLink: false,
+      redirectSearch: false
     }
   }
 
@@ -66,7 +68,24 @@ class ViewLocation extends Component {
         owner: ownerState,
         viewport
       })
-    })
+    });
+  }
+
+  showDelete = () => {
+    if(this.state.deleteLink){
+      this.setState({deleteLink: false})
+    }
+    else{
+      this.setState({deleteLink: true})
+    }
+  }
+
+  deleteElement = () => {
+    const { id } = this.props.match.params;
+    locationService.delete(id)
+      .then((location) => {
+        this.setState({redirectSearch: true});
+      });
   }
 
 
@@ -74,6 +93,10 @@ class ViewLocation extends Component {
     const { viewport, lat, lon } = this.state;
     return (
       <div className='view-page'>
+        {this.state.redirectSearch ? (
+          <Redirect to='/search-map'></Redirect>
+        ) : (
+        <>
         <div className="view-map">
           {lat ? (
             <ReactMapGL
@@ -120,11 +143,23 @@ class ViewLocation extends Component {
 
         {this.state.owner ? (
           <div className="view-links">
-            <Link className='view-links-component' to={'/location/' + this.state.id + '/update'}>Update</Link>
-            -
-            <Link className='view-links-component' to={'/location/' + this.state.id + '/delete'}>Delete</Link>
+            {this.state.deleteLink ? (
+              <p className='view-links-component'>
+                Do you really want to delete this location?
+                <p className='view-links-component-link' onClick={this.deleteElement}>
+                  Yes
+                </p>
+              </p>
+            ) : (
+              <>
+                <Link className='view-links-component-link' to={'/location/' + this.state.id + '/update'}>Update</Link>
+                <p className='view-links-component-link' onClick={this.showDelete}>Delete</p>
+              </>
+            )}
           </div>
         ) : null}
+        </>
+        )}
       </div>
     );
   }

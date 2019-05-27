@@ -21,6 +21,11 @@ class LocationService {
       .then(({ data }) => data)
   }
 
+  delete(id) {
+    return this.location.delete('/location/delete/' + id)
+      .then(({ data }) => data)
+  }
+
   imageUpload(file) {
     return this.location.post('/location/add/picture', file)
       .then(({ data }) => data)
