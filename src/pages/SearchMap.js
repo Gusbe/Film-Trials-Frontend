@@ -17,7 +17,7 @@ class SearchMap extends Component {
         bearing: 0,
         pitch: 0,
         width: '100vp',
-        height: 1500,
+        height: 700,
       },
       currentPosition: {
         latitude: null,
@@ -41,7 +41,7 @@ class SearchMap extends Component {
 
   componentDidUpdate() {
     if (this.state.lastSearch + 1000 < Date.now()) {
-      this.setState({lastSearch: Date.now()});
+      this.setState({ lastSearch: Date.now() });
       this.state.results = [];
       this.launchSearch();
     }
@@ -63,7 +63,7 @@ class SearchMap extends Component {
   }
 
   changeView = (viewport) => {
-  
+
     this.setState({ viewport });
 
   }
@@ -92,65 +92,72 @@ class SearchMap extends Component {
     const { viewport, selectedLocation } = this.state;
 
     return (
-      <div className="search-map">
-        
-        <ReactMapGL
-          {...viewport}
-          mapboxApiAccessToken={process.env.REACT_APP_MAP_TOKEN}
-          mapStyle='mapbox://styles/gusbe/cjw3cw74r0vw01cpiazy0w3f4'
-          onViewportChange={this.changeView}
-        >
-
-
-
-          {this.state.results.map((Location) => (
-            <Marker
-              key={Location.title}
-              latitude={Location.coords.coordinates[1]}
-              longitude={Location.coords.coordinates[0]}
-              offsetLeft={-8}
-              offsetTop={-27}
-            >
-              <div
-                onClick={e => {
-                  e.preventDefault();
-                  this.setState({ selectedLocation: Location })
-                }}
-              >
-                <img src='/img/logo-red.svg' alt='pin' style={{ width: '16px' }} />
-              </div>
-
-            </Marker>
-          ))}
-
-          {this.state.currentPosition.latitude ? (
-            <Marker
-            key='currentLocation'
-            latitude={this.state.currentPosition.latitude}
-            longitude={this.state.currentPosition.longitude}
-            offsetLeft={-10}
-            offsetTop={-10}
+      <div className="search-map-page">
+        <div className="current-location-button">
+          <button onClick={this.locateUser}>Current location</button>
+        </div>
+        <div className="location-info">
+          <img src='https://res.cloudinary.com/dslkk8z2m/image/upload/v1558967426/Film-Trails/laejr1op5ycwgxkq5atx.jpg'></img>
+          <p>Title</p>
+        </div>
+        <div className="search-map">
+          <ReactMapGL
+            {...viewport}
+            mapboxApiAccessToken={process.env.REACT_APP_MAP_TOKEN}
+            mapStyle='mapbox://styles/gusbe/cjw3cw74r0vw01cpiazy0w3f4'
+            onViewportChange={this.changeView}
           >
-            <div>
-              <img src='/img/blue.svg' alt='currentPosition' style={{ width: '20px' }} />
-            </div>
-          </Marker>
-          ) : null}
 
-          {selectedLocation ? (
-            <Popup
-              latitude={selectedLocation.coords.coordinates[1]}
-              longitude={selectedLocation.coords.coordinates[0]}
-              onClose={() => this.setState({ selectedLocation: null })}
-            >
-              <div>
-                <h3>{selectedLocation.title}</h3>
-                <img src={selectedLocation.scenePictureUrl} alt='selectedLocation.title' style={{ width: '50px' }} />
-              </div>
-            </Popup>
-          ) : null}
-        </ReactMapGL>
-        <button onClick={this.locateUser}>CURRENT LOCATION</button>
+
+
+            {this.state.results.map((Location) => (
+              <Marker
+                key={Location._id}
+                latitude={Location.coords.coordinates[1]}
+                longitude={Location.coords.coordinates[0]}
+                offsetLeft={-8}
+                offsetTop={-27}
+              >
+                <div
+                  onClick={e => {
+                    e.preventDefault();
+                    this.setState({ selectedLocation: Location })
+                  }}
+                >
+                  <img src='/img/logo-red.svg' alt='pin' style={{ width: '16px' }} />
+                </div>
+
+              </Marker>
+            ))}
+
+            {this.state.currentPosition.latitude ? (
+              <Marker
+                key='currentLocation'
+                latitude={this.state.currentPosition.latitude}
+                longitude={this.state.currentPosition.longitude}
+                offsetLeft={-10}
+                offsetTop={-10}
+              >
+                <div>
+                  <img src='/img/blue.svg' alt='currentPosition' style={{ width: '20px' }} />
+                </div>
+              </Marker>
+            ) : null}
+
+            {selectedLocation ? (
+              <Popup
+                latitude={selectedLocation.coords.coordinates[1]}
+                longitude={selectedLocation.coords.coordinates[0]}
+                onClose={() => this.setState({ selectedLocation: null })}
+              >
+                <div>
+                  <h3>{selectedLocation.title}</h3>
+                  <img src={selectedLocation.scenePictureUrl} alt='selectedLocation.title' style={{ width: '50px' }} />
+                </div>
+              </Popup>
+            ) : null}
+          </ReactMapGL>
+        </div>
       </div>
 
     );

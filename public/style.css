@@ -273,12 +273,47 @@ h3 {
   margin-right: 5px;
 }
 
-
-
-.search-map{
+.search-map-page{
   margin-top: 35px;
-
+  position: relative;
 }
+
+.search-map {
+  z-index: -10;
+}
+
+.current-location-button {
+  background: #dfdfdf;
+  border: 1px solid #bdbdbd;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0);
+  padding: 5px;
+  border-radius: 2px;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  z-index: 10;
+}
+
+.location-info {
+  background: white;
+  border: 1px solid #bdbdbd;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0);
+  border-radius: 2px;
+  position: absolute;
+  bottom: 50px;
+  right: 15px;
+  left: 15px;
+  z-index: 10;
+  width: 90%;
+}
+
+.location-info img {
+  width: 100%;
+}
+
+
+
+
 
 /* ---- typography ---- */
 
