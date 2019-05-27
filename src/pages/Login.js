@@ -6,6 +6,7 @@ class Login extends Component {
   state = {
     username: "",
     password: "",
+    notFilledFields: false,
   }
 
   handleFormSubmit = (event) => {
@@ -13,8 +14,13 @@ class Login extends Component {
     const { username, password } = this.state
 
     this.props.login({ username, password })
-      .then(() => {})
-      .catch( error => console.log(error) )
+      .then((data) => {
+        // if(data.response.data.status === 422) {
+        //   this.setState({
+        //     notFilledFields: true
+        //   })
+        // }
+      });
   }
 
   handleChange = (event) => {  
@@ -27,7 +33,7 @@ class Login extends Component {
   addPlaceholderPassword = (e) => e.target.placeholder = "Password";
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, notFilledFields } = this.state;
     return (
         <div className='login-page'>
           <div className="background"></div>
@@ -52,6 +58,7 @@ class Login extends Component {
                 onChange={this.handleChange}
               />
               <input id='form-button' type="submit" value="Login" />
+              {notFilledFields ? <p>Missing some fields</p>: null}
               <Link className='signup-link' to='/signup'>Create your account to add film locations</Link>
             </form>
           </div>
