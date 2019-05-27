@@ -13,9 +13,9 @@ class Navbar extends Component {
         <div className="navbar">
           <Logo />
           <div className="logout">
-            <p onClick={logout}>
+            <p>
               <span>{username}</span>
-              <img src='/img/logout.png' alt='logout' />
+              <img src='/img/logout.png' alt='logout' onClick={logout} />
             </p>
           </div>
         </div>
