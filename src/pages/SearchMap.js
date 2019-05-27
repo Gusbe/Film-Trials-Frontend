@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import { Redirect } from 'react-router-dom';
 
 import locationService from '../lib/locationService';
 
@@ -25,7 +26,8 @@ class SearchMap extends Component {
       },
       selectedLocation: null,
       results: [],
-      lastSearch: null
+      lastSearch: null,
+      goToViewLocation: false
     }
   }
 
@@ -92,17 +94,26 @@ class SearchMap extends Component {
     this.setState({selectedLocation: false});
   }
 
+  goToViewLocation = (_id) => {
+    console.log("ID: " + _id);
+    this.setState({goToViewLocation: _id});
+  }
+
   
 
   render() {
-    const { viewport, selectedLocation } = this.state;
+    const { viewport, selectedLocation, goToViewLocation } = this.state;
+    if(goToViewLocation){
+      return (<Redirect to={`/location/${goToViewLocation}`}/>);
+    }
+    
     return (
       <div className="search-map-page">
         <button className="current-location-button" onClick={this.locateUser}>Current location</button>
 
         {selectedLocation ? (
 
-          <div className="location-info" style={{ backgroundImage: 'url(' + selectedLocation.scenePictureUrl + ')' }}>
+          <div className="location-info" onClick={this.goToViewLocation(selectedLocation._id)} style={{ backgroundImage: 'url(' + selectedLocation.scenePictureUrl + ')' }}>
             <div className="close-location-inf" onClick={this.closeLocation}>
               <img src="/img/close-window.png" alt="close" />
             </div>
