@@ -90,101 +90,102 @@ class SearchMap extends Component {
     });
   }
 
-  closeLocation = () => {
-    this.setState({selectedLocation: false});
+  closeLocation = (e) => {
+    e.stopPropagation();
+    this.setState({ selectedLocation: false });
   }
 
-  goToViewLocation = (_id) => {
-    console.log("ID: " + _id);
-    this.setState({goToViewLocation: _id});
+  goToViewLocation = () => {
+    this.setState({ goToViewLocation: this.state.selectedLocation._id });
   }
 
-  
+
 
   render() {
     const { viewport, selectedLocation, goToViewLocation } = this.state;
-    if(goToViewLocation){
-      return (<Redirect to={`/location/${goToViewLocation}`}/>);
+
+    if (goToViewLocation) {
+      return (<Redirect to={`/location/${goToViewLocation}`} />);
     }
-    
-    return (
-      <div className="search-map-page">
-        <button className="current-location-button" onClick={this.locateUser}>Current location</button>
+    else {
 
-        {selectedLocation ? (
+      return (
+        <div className="search-map-page">
+          <button className="current-location-button" onClick={this.locateUser}>Current location</button>
 
-          <div className="location-info" onClick={this.goToViewLocation(selectedLocation._id)} style={{ backgroundImage: 'url(' + selectedLocation.scenePictureUrl + ')' }}>
-            <div className="close-location-inf" onClick={this.closeLocation}>
-              <img src="/img/close-window.png" alt="close" />
+          {selectedLocation ? (
+
+            <div className="location-info" onClick={this.goToViewLocation} style={{ backgroundImage: 'url(' + selectedLocation.scenePictureUrl + ')' }}>
+              <div className="close-location-inf" onClick={this.closeLocation}>
+                <img src="/img/close-window.png" alt="close" />
+              </div>
+              <p>{selectedLocation.title}</p>
             </div>
-            <p>{selectedLocation.title}</p>
-          </div>
 
-        ) : null}
+          ) : null}
 
-        <div className="search-map">
-          <ReactMapGL
-            {...viewport}
-            mapboxApiAccessToken={process.env.REACT_APP_MAP_TOKEN}
-            mapStyle='mapbox://styles/gusbe/cjw3cw74r0vw01cpiazy0w3f4'
-            onViewportChange={this.changeView}
+          <div className="search-map">
+            <ReactMapGL
+              {...viewport}
+              mapboxApiAccessToken={process.env.REACT_APP_MAP_TOKEN}
+              mapStyle='mapbox://styles/gusbe/cjw3cw74r0vw01cpiazy0w3f4'
+              onViewportChange={this.changeView}
 
-          >
+            >
 
 
 
-            {this.state.results.map((Location) => (
-              <Marker
-                key={Location._id}
-                latitude={Location.coords.coordinates[1]}
-                longitude={Location.coords.coordinates[0]}
-                offsetLeft={-8}
-                offsetTop={-27}
-
-                offsetLeft={selectedLocation && selectedLocation._id === Location._id ? (-12) : (-8)}
-                offsetTop={selectedLocation && selectedLocation._id === Location._id ? (-40) : (-27)}
-
-              >
-                <div
-                  onClick={e => {
-                    e.preventDefault();
-                    this.setState({ selectedLocation: Location})
-                  }}
-                >
-                  {selectedLocation && selectedLocation._id === Location._id ? (
-                    <img src='/img/logo-orange.svg' alt='pin' style={{ width: '24px' }} />
-                  ) : (
-                    <img src='/img/logo-red.svg' alt='pin' style={{ width: '16px' }} />
-                  )}
-
-
-
+              {this.state.results.map((Location) => (
+                <Marker
+                  key={Location._id}
+                  latitude={Location.coords.coordinates[1]}
+                  longitude={Location.coords.coordinates[0]}
                   
-                </div>
+                  offsetLeft={selectedLocation && selectedLocation._id === Location._id ? (-12) : (-8)}
+                  offsetTop={selectedLocation && selectedLocation._id === Location._id ? (-40) : (-27)}
 
-              </Marker>
-            ))}
+                >
+                  <div
+                    onClick={e => {
+                      e.preventDefault();
+                      this.setState({ selectedLocation: Location })
+                    }}
+                  >
+                    {selectedLocation && selectedLocation._id === Location._id ? (
+                      <img src='/img/logo-orange.svg' alt='pin' style={{ width: '24px' }} />
+                    ) : (
+                        <img src='/img/logo-red.svg' alt='pin' style={{ width: '16px' }} />
+                      )}
 
-            {this.state.currentPosition.latitude ? (
-              <Marker
-                key='currentLocation'
-                latitude={this.state.currentPosition.latitude}
-                longitude={this.state.currentPosition.longitude}
-                offsetLeft={-10}
-                offsetTop={-10}
-              >
-                <div>
-                  <img src='/img/blue.svg' alt='currentPosition' style={{ width: '20px' }} />
-                </div>
-              </Marker>
-            ) : null}
 
-            
-          </ReactMapGL>
+
+
+                  </div>
+
+                </Marker>
+              ))}
+
+              {this.state.currentPosition.latitude ? (
+                <Marker
+                  key='currentLocation'
+                  latitude={this.state.currentPosition.latitude}
+                  longitude={this.state.currentPosition.longitude}
+                  offsetLeft={-10}
+                  offsetTop={-10}
+                >
+                  <div>
+                    <img src='/img/blue.svg' alt='currentPosition' style={{ width: '20px' }} />
+                  </div>
+                </Marker>
+              ) : null}
+
+
+            </ReactMapGL>
+          </div>
         </div>
-      </div>
 
-    );
+      );
+    }
   }
 }
 
