@@ -42,6 +42,7 @@ class SearchMap extends Component {
   componentDidUpdate() {
     if (this.state.lastSearch + 1000 < Date.now()) {
       this.setState({lastSearch: Date.now()});
+      this.state.results = [];
       this.launchSearch();
     }
   }
@@ -62,7 +63,7 @@ class SearchMap extends Component {
   }
 
   changeView = (viewport) => {
-
+  
     this.setState({ viewport });
 
   }
