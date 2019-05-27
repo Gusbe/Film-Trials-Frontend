@@ -51,7 +51,7 @@ class ViewLocation extends Component {
       let viewport = {
         latitude: coords.coordinates[1],
         longitude: coords.coordinates[0],
-        zoom: 14,
+        zoom: 11,
         bearing: 0,
         pitch: 0,
         width: '100vp',
@@ -109,11 +109,11 @@ class ViewLocation extends Component {
                 key='sss'
                 latitude={lat}
                 longitude={lon}
-                offsetLeft={-10}
-                offsetTop={-10}
+                offsetLeft={-8}
+                offsetTop={-27}
               >
                 <div>
-                  <img src='/img/pin.png' alt='currentPosition' style={{ width: '20px' }} />
+                  <img src='/img/logo-red.svg' alt='currentPosition' style={{ width: '20px', fill: 'red' }} />
                 </div>
               </Marker>
 
@@ -146,15 +146,18 @@ class ViewLocation extends Component {
             {this.state.deleteLink ? (
               <p className='view-links-component'>
                 Do you really want to delete this location?
-                <p className='view-links-component-link' onClick={this.deleteElement}>
+                <a href="#;" className='view-links-component-link' onClick={this.deleteElement}>
                   Yes
-                </p>
+                </a>
+                <a href="#;" className='view-links-component-link' onClick={this.showDelete}>
+                  No
+                </a>
               </p>
             ) : (
-              <>
+              <p className='view-links-component'>
                 <Link className='view-links-component-link' to={'/location/' + this.state.id + '/update'}>Update</Link>
-                <p className='view-links-component-link' onClick={this.showDelete}>Delete</p>
-              </>
+                <a href="#;" className='view-links-component-link' onClick={this.showDelete}>Delete</a>
+              </p>
             )}
           </div>
         ) : null}

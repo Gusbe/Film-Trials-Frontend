@@ -200,6 +200,7 @@ h3 {
 
 .view-page {
   margin-top: 35px;
+  padding-bottom: 62px;
 }
 
 .view-map {
@@ -236,10 +237,9 @@ h3 {
 }
 
 .view-links-component-link {
-  margin: 20px 20px 80px 20px;
+  margin: 20px 20px 280px 20px;
   color: rgb(74, 74, 74);
   text-decoration: underline;
-  border: 1px solid blue;
 }
 
 .view-links-component {

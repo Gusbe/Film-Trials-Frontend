@@ -116,7 +116,7 @@ class SearchMap extends Component {
                   this.setState({ selectedLocation: Location })
                 }}
               >
-                <img src='/img/pin.png' alt='pin' style={{ width: '16px' }} />
+                <img src='/img/logo-red.svg' alt='pin' style={{ width: '16px' }} />
               </div>
 
             </Marker>
