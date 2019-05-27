@@ -17,7 +17,7 @@ body {
 }
 
 .navbar {
-  background-color:rgb(210,56,31);
+  background-color:rgb(138, 24, 51);
   position:fixed;
   top:0;
   width:100%;
@@ -116,7 +116,7 @@ h1 {
 }
 
 #form-button {
-  background: rgb(210,56,31);
+  background: rgb(138, 24, 51);
   color: white;
   font-size: 16px;
   margin-top: 20px;
@@ -129,7 +129,7 @@ h1 {
 
 .signup-link {
   text-decoration: none;
-  color: rgb(210,56,31);
+  color: rgb(138, 24, 51);
   font-size: 12px;
   text-align: center;
 }
@@ -151,7 +151,9 @@ h2{
 
 .get-location-button {
   background: #f2f2f2;
-  color: black;
+  border: 1px solid #bdbdbd;
+  padding: 5px;
+  border-radius: 2px;
   font-size: 12px;
   height: 25px;
   margin-top: 30px;
@@ -185,7 +187,7 @@ h3 {
 }
 
 #add-button {
-  background: rgb(210,56,31);
+  background: rgb(138, 24, 51);
   color: white;
   font-size: 16px;
   margin-top: 20px;
@@ -258,7 +260,7 @@ h3 {
 
 
 .footer {
-  background-color:rgb(210,56,31);
+  background-color:rgb(138, 24, 51);
   position:fixed;
   bottom:0;
   width:100%;

@@ -88,16 +88,29 @@ class SearchMap extends Component {
     });
   }
 
+  closeLocation = () => {
+    this.setState({selectedLocation: false});
+  }
+
+  
+
   render() {
     const { viewport, selectedLocation } = this.state;
-    const background = 'https://res.cloudinary.com/dslkk8z2m/image/upload/v1558967426/Film-Trails/laejr1op5ycwgxkq5atx.jpg';
     return (
       <div className="search-map-page">
         <button className="current-location-button" onClick={this.locateUser}>Current location</button>
-        <div className="location-info" style={{backgroundImage: 'url(' + background + ')'}}>
-          <div className="close-location-inf"><img src="/img/close-window.png" alt="close"/></div>
-          <p>The lord of the rings</p>
-        </div>
+
+        {selectedLocation ? (
+
+          <div className="location-info" style={{ backgroundImage: 'url(' + selectedLocation.scenePictureUrl + ')' }}>
+            <div className="close-location-inf" onClick={this.closeLocation}>
+              <img src="/img/close-window.png" alt="close" />
+            </div>
+            <p>{selectedLocation.title}</p>
+          </div>
+
+        ) : null}
+
         <div className="search-map">
           <ReactMapGL
             {...viewport}
@@ -116,14 +129,26 @@ class SearchMap extends Component {
                 longitude={Location.coords.coordinates[0]}
                 offsetLeft={-8}
                 offsetTop={-27}
+
+                offsetLeft={selectedLocation && selectedLocation._id === Location._id ? (-12) : (-8)}
+                offsetTop={selectedLocation && selectedLocation._id === Location._id ? (-40) : (-27)}
+
               >
                 <div
                   onClick={e => {
                     e.preventDefault();
-                    this.setState({ selectedLocation: Location })
+                    this.setState({ selectedLocation: Location})
                   }}
                 >
-                  <img src='/img/logo-red.svg' alt='pin' style={{ width: '16px' }} />
+                  {selectedLocation && selectedLocation._id === Location._id ? (
+                    <img src='/img/logo-orange.svg' alt='pin' style={{ width: '24px' }} />
+                  ) : (
+                    <img src='/img/logo-red.svg' alt='pin' style={{ width: '16px' }} />
+                  )}
+
+
+
+                  
                 </div>
 
               </Marker>
@@ -143,18 +168,7 @@ class SearchMap extends Component {
               </Marker>
             ) : null}
 
-            {selectedLocation ? (
-              <Popup
-                latitude={selectedLocation.coords.coordinates[1]}
-                longitude={selectedLocation.coords.coordinates[0]}
-                onClose={() => this.setState({ selectedLocation: null })}
-              >
-                <div>
-                  <h3>{selectedLocation.title}</h3>
-                  <img src={selectedLocation.scenePictureUrl} alt='selectedLocation.title' style={{ width: '50px' }} />
-                </div>
-              </Popup>
-            ) : null}
+            
           </ReactMapGL>
         </div>
       </div>
