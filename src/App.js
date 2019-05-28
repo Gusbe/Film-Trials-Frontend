@@ -24,13 +24,12 @@ class App extends Component {
         <div className="container">
           <Navbar />
           <Switch>
-            <Route path="/search" component={Search}  />
+            <Route path="/" component={SearchMap} exact />
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
             <PrivateRoute path="/location/add" component={AddLocation} exact/>
             <Route path="/location/:id" component={ViewLocation}  />
             <Route path="/search/:id" component={Search}  />
-            <Route path="/search-map" component={SearchMap}  />
           </Switch>
           <Footer />
         </div>

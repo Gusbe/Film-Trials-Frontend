@@ -7,10 +7,7 @@ class Navbar extends Component {
     return (
       <div className="footer">
         <div>
-          <Link className="link-nav" to='/search-map'><img src="/img/map-icon.svg" alt='Map Search'/></Link>
-        </div>
-        <div>
-          <Link className="link-nav" to='/location/add'><img src="/img/map-add.svg" alt='Map Add'/></Link>
+          <Link className="link-nav" to='/'><img src="/img/map-icon.svg" alt='Map Search'/></Link>
         </div>
         <div>
           <Link className="link-nav" to='/location/add'><img src="/img/map-add.svg" alt='Map Add'/></Link>

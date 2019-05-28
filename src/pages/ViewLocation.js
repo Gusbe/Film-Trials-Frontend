@@ -94,7 +94,7 @@ class ViewLocation extends Component {
     return (
       <div className='view-page'>
         {this.state.redirectSearch ? (
-          <Redirect to='/search-map'></Redirect>
+          <Redirect to='/'></Redirect>
         ) : (
         <>
         <div className="view-map">
