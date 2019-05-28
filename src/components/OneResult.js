@@ -1,15 +1,20 @@
 import React from 'react'
 
 function OneResult(props) {
+  let distance;
+  if(props.info.distance/1000 < 1) distance = `${Math.trunc(props.info.distance)} meters`;
+  else if(props.info.distance/1000 < 5) distance = `${(props.info.distance/1000).toFixed(2)} Kms`;
+  else distance = `${Math.trunc(props.info.distance/1000)-1} Kms`;
 
   return (
-    <div>
-      <div>Title: {props.info.title}</div>
-      <div><img style={{ width: '300px' }} src={props.info.scenePictureUrl} alt={props.info.title} /></div>
-      <div>ID: {props.info._id}</div>
-      <div>Latitude: {props.info.coords.coordinates[1]}</div>
-      <div>Longitude: {props.info.coords.coordinates[0]}</div>
-      <div>Distance: {props.info.distance}</div>
+    <div className="one-result">
+
+      <div className="location-info-one-result" style={{ backgroundImage: 'url(' + props.info.scenePictureUrl + ')' }} />
+      <div className="title-distance">
+        <p id="title-one-result">{props.info.title}</p>
+        <p id="distance-one-result">{distance}</p>
+      </div>
+      
     </div>
   )
 }

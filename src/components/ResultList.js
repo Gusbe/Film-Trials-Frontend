@@ -25,7 +25,6 @@ class ResultList extends Component {
 
     return (
       <div>
-        This is the result list
         {resultList}
       </div>
     )
