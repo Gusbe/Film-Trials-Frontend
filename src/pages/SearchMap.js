@@ -12,9 +12,9 @@ class SearchMap extends Component {
 
     this.state = {
       viewport: {
-        latitude: 41.5,
-        longitude: 2.3,
-        zoom: 10,
+        latitude: 41.39,
+        longitude: 2.17,
+        zoom: 12,
         bearing: 0,
         pitch: 0,
         width: '100vp',
