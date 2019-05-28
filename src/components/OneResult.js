@@ -12,7 +12,11 @@ function OneResult(props) {
       <div className="location-info-one-result" style={{ backgroundImage: 'url(' + props.info.scenePictureUrl + ')' }} />
       <div className="title-distance">
         <p id="title-one-result">{props.info.title}</p>
-        <p id="distance-one-result">{distance}</p>
+        <div className="place-distance">
+          <p id="place-one-result">{props.info.placeName}</p>
+          <p id="distance-one-result">{distance}</p>
+        </div>
+        
       </div>
       
     </div>

@@ -119,7 +119,8 @@ class SearchMap extends Component {
               <div className="close-location-inf" onClick={this.closeLocation}>
                 <img src="/img/close-window.png" alt="close" />
               </div>
-              <p>{selectedLocation.title}</p>
+              <p>{selectedLocation.placeName}</p>
+              <p className="title-card">{selectedLocation.title}</p>
             </div>
 
           ) : null}

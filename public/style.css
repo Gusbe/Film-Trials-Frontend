@@ -317,8 +317,15 @@ h3 {
 
 .location-info p {
   background-color: white;
-  padding: 8px;
   font-weight: bold;
+  padding: 10px;
+}
+
+.title-card {
+  background-color: white;
+  font-weight: bold;
+  font-size: 22px;
+  padding-top: 15px;
 }
 
 .location-info img {
@@ -375,9 +382,8 @@ h3 {
 }
 
 .title-distance {
-  display: flex;
-  justify-content: space-between;
   padding: 0 10px;
+  text-align: left;
 }
 
 #title-one-result {
@@ -399,6 +405,12 @@ h3 {
   top: 20px;
   right: 10px;
   z-index: 10;
+}
+
+.place-distance {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0px;
 }
 
 

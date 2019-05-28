@@ -15,6 +15,7 @@ class ViewLocation extends Component {
       title: '',
       lat: '',
       lon: '',
+      placeName: '',
       scenePictureUrl: '',
       author: '',
       owner: false,
@@ -41,7 +42,7 @@ class ViewLocation extends Component {
     locationService.view(id)
     .then((location) => {
       
-      const { _id, scenePictureUrl, title, coords, user } = location;
+      const { _id, scenePictureUrl, title, coords, user, placeName } = location;
 
       let ownerState = false;
       if(this.props.user._id === user._id){
@@ -63,6 +64,7 @@ class ViewLocation extends Component {
         title,
         lat: coords.coordinates[1],
         lon: coords.coordinates[0],
+        placeName,
         scenePictureUrl,
         author: user.username,
         owner: ownerState,
@@ -135,6 +137,7 @@ class ViewLocation extends Component {
         </div>
         <div className="view-title">
           <h1>{this.state.title}</h1>
+          <h2>{this.state.placeName}</h2>
         </div>
         <div className="view-image">
           <img src={this.state.scenePictureUrl} alt={this.state.title} />
