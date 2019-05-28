@@ -12,6 +12,7 @@ class AddLocation extends Component {
       title: '',
       lat: '',
       lon: '',
+      placeName: '',
       scenePictureUrl: '',
       disable: true,
       viewport: {
@@ -86,6 +87,7 @@ class AddLocation extends Component {
 
     const locationObject = {
       title: this.state.title,
+      placeName: this.state.placeName,
       scenePictureUrl: this.state.scenePictureUrl,
       coords: {
         coordinates: [this.state.lon, this.state.lat],
@@ -129,7 +131,7 @@ class AddLocation extends Component {
       <div className='add-location-page'>
         <h2>Add a new movie location</h2>
         <div className='add-location'>
-          <h3>1. Select location:</h3>
+          <h3>Select location:</h3>
           <button className='get-location-button' onClick={this.locateUser}>Current location</button>
         </div>
         <div className="add-map">
@@ -178,9 +180,11 @@ class AddLocation extends Component {
             <input className='lat-lon-inputs' type="text" name="lon" value={this.state.lon} onChange={this.handleChange} />
             <label className='lat-lon-inputs' name="lat">Lat:</label>
             <input className='lat-lon-inputs' type="text" name="lat" value={this.state.lat} onChange={this.handleChange} />
-            <h3>2. Movie title:</h3>
+            <h3>Place name:</h3>
+            <input type="text" name="placeName" value={this.state.placeName} onChange={this.handleChange} />
+            <h3>Movie title:</h3>
             <input type="text" name="title" value={this.state.title} onChange={this.handleChange} />
-            <h3>3. Upload a scene picture:</h3>
+            <h3>Upload a scene picture:</h3>
             <input type="file" onChange={this.fileOnchange} name="image" />
             {this.state.disable ? <input id='add-button-disabled' type="submit" value='Complete all the fields' disabled></input> : <input id='add-button' type="submit"  value='Send new location'></input>}
           </form>
