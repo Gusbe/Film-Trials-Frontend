@@ -16,7 +16,7 @@ class Search extends Component {
       searchParams: {
         lat: 41.39,
         lon: 2.17,
-        dist: 25/2
+        dist: 25 / 2
       },
       viewport: {
         latitude: 41.39,
@@ -35,6 +35,10 @@ class Search extends Component {
         lon: 2.17,
         lat: 41.39
       },
+      detailPosition: {
+        lon: null,
+        lat: null
+      },
       lastSearch: null
     }
   }
@@ -50,33 +54,33 @@ class Search extends Component {
   launchSearch = () => {
     let latSearch;
     let lonSearch;
-    if(this.state.savePosition !== null){
+    if (this.state.savePosition !== null) {
       latSearch = this.state.savePosition.lat;
       lonSearch = this.state.savePosition.lon;
     }
-    else{
+    else {
       latSearch = this.state.viewport.latitude;
       lonSearch = this.state.viewport.longitude;
     }
 
     let d = 0;
     let z = this.state.viewport.zoom;
-    if(z<2) d=13000000/2;
-    else if(z<3) d=10000000/2;
-    else if(z<4) d=4000000/2;
-    else if(z<5) d=2700000/2;
-    else if(z<6) d=1500000/2;
-    else if(z<7) d=700000/2;
-    else if(z<8) d=350000/2;
-    else if(z<9) d=182000/2;
-    else if(z<10) d=85000/2;
-    else if(z<11) d=43000/2;
-    else if(z<12) d=25000/2;
-    else if(z<13) d=13000/2;
-    else if(z<14) d=5000/2;
-    else if(z<15) d=2500/2;
-    else if(z<16) d=1300/2;
-    
+    if (z < 2) d = 13000000 / 2;
+    else if (z < 3) d = 10000000 / 2;
+    else if (z < 4) d = 4000000 / 2;
+    else if (z < 5) d = 2700000 / 2;
+    else if (z < 6) d = 1500000 / 2;
+    else if (z < 7) d = 700000 / 2;
+    else if (z < 8) d = 350000 / 2;
+    else if (z < 9) d = 182000 / 2;
+    else if (z < 10) d = 85000 / 2;
+    else if (z < 11) d = 43000 / 2;
+    else if (z < 12) d = 25000 / 2;
+    else if (z < 13) d = 13000 / 2;
+    else if (z < 14) d = 5000 / 2;
+    else if (z < 15) d = 2500 / 2;
+    else if (z < 16) d = 1300 / 2;
+
     const searchParams = {
       lat: latSearch,
       lon: lonSearch,
@@ -118,7 +122,7 @@ class Search extends Component {
   }
 
   handleClick = (ev) => {
-
+    window.scrollTo(0, 0);
     const savePosition = {
       lon: ev.lngLat[0],
       lat: ev.lngLat[1]
@@ -126,7 +130,11 @@ class Search extends Component {
     this.setState({ savePosition, lat: savePosition.lat, lon: savePosition.lon });
   };
 
- 
+  changeDetailMarker = (pos) => {
+    this.setState({ detailPosition: pos });
+  }
+
+
 
   render() {
     const { viewport } = this.state;
@@ -157,6 +165,8 @@ class Search extends Component {
               </Marker>
             ) : null}
 
+            
+
             {this.state.savePosition ? (
               <Marker
                 key='saveLocation'
@@ -171,12 +181,48 @@ class Search extends Component {
               </Marker>
             ) : null}
 
+
+
+
+
+            {this.state.results.map((Location) => (
+              <Marker
+                key={Location._id}
+                latitude={Location.coords.coordinates[1]}
+                longitude={Location.coords.coordinates[0]}
+                offsetLeft={-10}
+                offsetTop={-10}
+              >
+                <div>
+                  <img src='/img/logo-red.svg' alt='pin' style={{ width: '16px' }} />
+                </div>
+
+              </Marker>
+            ))}
+
+            {this.state.detailPosition.lon ? (
+              <Marker
+                key='detailPosition'
+                latitude={this.state.detailPosition.lat}
+                longitude={this.state.detailPosition.lon}
+                offsetLeft={-10}
+                offsetTop={-10}
+              >
+                <div>
+                  <img src='/img/logo-orange.svg' alt='savePosition' style={{ width: '16px' }} />
+                </div>
+              </Marker>
+            ) : null}
+
+
+
+
           </ReactMapGL>
         </div>
         <div className="result-list">
           <h2>{this.state.results.length} film locations</h2>
-          <ResultList results={this.state.results} />
-        </div>        
+          <ResultList results={this.state.results} changeDetailMarker={this.changeDetailMarker} />
+        </div>
       </div>
     );
   }

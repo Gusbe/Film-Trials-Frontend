@@ -5,10 +5,6 @@ class ResultList extends Component {
 
   constructor(props){
     super(props);
-    this.state = {
-  
-    }
-
   }
   
 
@@ -17,7 +13,7 @@ class ResultList extends Component {
     const resultList = results.map( (result) => {
       return (
        <div key={result._id}>
-         <OneResult info={result}/>
+         <OneResult info={result} changeDetailMarker={this.props.changeDetailMarker}/>
        </div>
       );
     });
