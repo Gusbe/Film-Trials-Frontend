@@ -3,9 +3,6 @@ import OneResult from './OneResult';
 
 class ResultList extends Component {
 
-  constructor(props){
-    super(props);
-  }
   
 
   render() {

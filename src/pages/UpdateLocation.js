@@ -227,7 +227,7 @@ class AddLocation extends Component {
             <h3>Movie title:</h3>
             <input type="text" name="title" value={this.state.title} onChange={this.handleChange} />
             <h3>Scene picture:</h3>
-            <img className='picture-update' src={this.state.scenePictureUrl} />
+            <img className='picture-update' src={this.state.scenePictureUrl} alt="scene"/>
             
             {this.state.uploadPicture ? (
               <input type="file" onChange={this.fileOnchange} name="image" />
@@ -239,7 +239,7 @@ class AddLocation extends Component {
 
 
 
-            {this.state.disable ? <input id='add-button-disabled' type="submit" value='Complete all the fields' disabled></input> : <input id='add-button' type="submit"  value='Send new location'></input>}
+            {this.state.disable ? <input id='add-button-disabled' type="submit" value='Complete all the fields' disabled></input> : <input id='add-button' type="submit"  value='Change location info'></input>}
           </form>
         </div>
       </div>
