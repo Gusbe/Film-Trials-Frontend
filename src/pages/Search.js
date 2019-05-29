@@ -162,11 +162,11 @@ class Search extends Component {
                 key='saveLocation'
                 latitude={this.state.savePosition.lat}
                 longitude={this.state.savePosition.lon}
-                offsetLeft={-8}
+                offsetLeft={-13}
                 offsetTop={-27}
               >
                 <div>
-                  <img src='/img/logo-red.svg' alt='savePosition' style={{ width: '16px' }} />
+                  <img src='/img/pin-search.svg' alt='savePosition' style={{ width: '26px' }} />
                 </div>
               </Marker>
             ) : null}
