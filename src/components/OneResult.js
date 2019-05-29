@@ -1,26 +1,54 @@
-import React from 'react'
+import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
-function OneResult(props) {
-  let distance;
-  if(props.info.distance/1000 < 1) distance = `${Math.trunc(props.info.distance)} meters`;
-  else if(props.info.distance/1000 < 5) distance = `${(props.info.distance/1000).toFixed(2)} Kms`;
-  else distance = `${Math.trunc(props.info.distance/1000)-1} Kms`;
+class OneResult extends Component {
 
+  constructor(props){
+
+    super(props);
+
+    this.state = {
+      distance: props.info.distance,
+      scenePictureUrl: props.info.scenePictureUrl,
+      title: props.info.title,
+      _id: props.info._id,
+      placeName: props.info.placeName
+    }
+  
+  }
+
+  showMarker = () => {
+    console.log('Mouse over');
+  }
+
+  unshowMarker = () => {
+    console.log('Mouse out');
+  }
+  
+
+  render() {
+    let distance;
+  if(this.state.distance/1000 < 1) distance = `${Math.trunc(this.state.distance)} meters`;
+  else if(this.state.distance/1000 < 5) distance = `${(this.state.distance/1000).toFixed(2)} Kms`;
+  else distance = `${Math.trunc(this.state.distance/1000)-1} Kms`;
   return (
-    <div className="one-result">
+    <Link to={`/location/${this.state._id}`} className='link-location'>
+      <div className="one-result" >
 
-      <div className="location-info-one-result" style={{ backgroundImage: 'url(' + props.info.scenePictureUrl + ')' }} />
-      <div className="title-distance">
-        <p id="title-one-result">{props.info.title}</p>
-        <div className="place-distance">
-          <p id="place-one-result">{props.info.placeName}</p>
-          <p id="distance-one-result">{distance}</p>
+        <div className="location-info-one-result" style={{ backgroundImage: 'url(' + this.state.scenePictureUrl + ')' }} />
+        <div className="title-distance">
+          <p id="title-one-result">{this.state.title}</p>
+          <div className="place-distance">
+            <p id="place-one-result">{this.state.placeName}</p>
+            <p id="distance-one-result">{distance}</p>
+          </div>
+
         </div>
-        
+
       </div>
-      
-    </div>
+      </Link>
   )
+  }
 }
 
-export default OneResult
+export default OneResult;

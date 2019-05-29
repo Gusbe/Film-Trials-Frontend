@@ -413,6 +413,11 @@ h3 {
   padding: 5px 0px;
 }
 
+.link-location {
+  text-decoration: none;
+  color: rgb(74, 74, 74);
+}
+
 
 
 /* ---- typography ---- */
