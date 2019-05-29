@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import AddLocation from './pages/AddLocation';
+import UpdateLocation from './pages/UpdateLocation';
 import ViewLocation from './pages/ViewLocation';
 import Search from './pages/Search';
 import SearchMap from './pages/SearchMap';
@@ -28,6 +29,7 @@ class App extends Component {
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
             <PrivateRoute path="/location/add" component={AddLocation} exact/>
+            <Route path="/location/:id/update" component={UpdateLocation}  />
             <Route path="/location/:id" component={ViewLocation}  />
             <Route path="/search/:id" component={Search}  />
             <Route path="/search" component={Search}  />

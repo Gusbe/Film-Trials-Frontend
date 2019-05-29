@@ -462,7 +462,19 @@ h3 {
   color: rgb(74, 74, 74);
 }
 
+.picture-update{
+  width: 100%;
+}
 
+.edit-foto-content {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.update-picture-icon {
+  width: 18px;
+  margin: 0px 10px;
+}
 
 /* ---- typography ---- */
 

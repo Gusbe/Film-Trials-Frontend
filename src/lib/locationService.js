@@ -21,6 +21,11 @@ class LocationService {
       .then(({ data }) => data)
   }
 
+  update(id, location) {
+    return this.location.post('/location/update/' + id, location)
+      .then(({ data }) => data)
+  }
+
   delete(id) {
     return this.location.delete('/location/delete/' + id)
       .then(({ data }) => data)
