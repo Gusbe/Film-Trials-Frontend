@@ -141,8 +141,11 @@ class Search extends Component {
 
     return (
       <div className='search-list-page'>
-        <button className='list-current-location-button' onClick={this.locateUser}>Current location</button>
+
+        
+
         <div className="list-map">
+        <button className='list-current-location-button' onClick={this.locateUser}>Current location</button>
           <ReactMapGL
             {...viewport}
             mapboxApiAccessToken={process.env.REACT_APP_MAP_TOKEN}

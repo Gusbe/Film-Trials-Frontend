@@ -7,6 +7,14 @@ html {
   box-sizing: inherit;
 }
 
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  background-color: #d5d5d5;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -14,6 +22,7 @@ body {
   font-family: Arial, sans-serif;
   line-height: 147%;
   color: rgb(74, 74, 74);
+  overflow:hidden;
 }
 
 .navbar {
@@ -150,7 +159,7 @@ h2{
 }
 
 .get-location-button {
-  background: #f2f2f2;
+  background-color: #f2f2f2;
   border: 1px solid #bdbdbd;
   padding: 5px;
   border-radius: 2px;
@@ -173,7 +182,7 @@ h2{
 
 .add-form input {
   outline: 0;
-  background: #f2f2f2;
+  background-color: #f2f2f2;
   border: 1px solid #cdcdcd;
   width: 100%;
   margin: 0 0 22px;
