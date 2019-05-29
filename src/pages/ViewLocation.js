@@ -52,7 +52,7 @@ class ViewLocation extends Component {
       let viewport = {
         latitude: coords.coordinates[1],
         longitude: coords.coordinates[0],
-        zoom: 11,
+        zoom: 12,
         bearing: 0,
         pitch: 0,
         width: '100vp',
@@ -99,12 +99,77 @@ class ViewLocation extends Component {
           <Redirect to='/'></Redirect>
         ) : (
         <>
+        
+
+
+        <div className="view-image">
+          <img src={this.state.scenePictureUrl} alt={this.state.title} />
+          <p>Uploaded by: {this.state.author} </p>
+        </div>
+
+
+
+
+        <div className="view-title">
+          <h1>{this.state.title}</h1>
+          <h2>{this.state.placeName}</h2>
+        </div>
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {this.state.owner ? (
+          <div className="view-links">
+            {this.state.deleteLink ? (
+              <p className='view-links-component'>
+                Do you really want to delete this location?
+                <a href="#;" className='view-links-component-link' onClick={this.deleteElement}>
+                  Yes
+                </a>
+                <a href="#;" className='view-links-component-link' onClick={this.showDelete}>
+                  No
+                </a>
+              </p>
+            ) : (
+              <p className='view-links-component'>
+                <Link className='view-links-component-link' to={'/location/' + this.state.id + '/update'}>
+                <img src="/img/pen.svg" alt="update" className="update-icon" />
+                Update
+                </Link>
+                <img src="/img/delete.svg" alt="delete" className="delete-icon" />
+                <a href="#;" className='view-links-component-link' onClick={this.showDelete}>Delete</a>
+              </p>
+            )}
+          </div>
+        ) : null}
+
+
+
+
+
+
+
+
+
         <div className="view-map">
           {lat ? (
             <ReactMapGL
               {...viewport}
               mapboxApiAccessToken={process.env.REACT_APP_MAP_TOKEN}
               mapStyle='mapbox://styles/gusbe/cjw3cw74r0vw01cpiazy0w3f4'
+              className='view-map-wrap'
             >
 
               <Marker
@@ -135,35 +200,15 @@ class ViewLocation extends Component {
             </ReactMapGL>
           ) : null}
         </div>
-        <div className="view-title">
-          <h1>{this.state.title}</h1>
-          <h2>{this.state.placeName}</h2>
-        </div>
-        <div className="view-image">
-          <img src={this.state.scenePictureUrl} alt={this.state.title} />
-          <p>Uploaded by: {this.state.author} </p>
-        </div>
 
-        {this.state.owner ? (
-          <div className="view-links">
-            {this.state.deleteLink ? (
-              <p className='view-links-component'>
-                Do you really want to delete this location?
-                <a href="#;" className='view-links-component-link' onClick={this.deleteElement}>
-                  Yes
-                </a>
-                <a href="#;" className='view-links-component-link' onClick={this.showDelete}>
-                  No
-                </a>
-              </p>
-            ) : (
-              <p className='view-links-component'>
-                <Link className='view-links-component-link' to={'/location/' + this.state.id + '/update'}>Update</Link>
-                <a href="#;" className='view-links-component-link' onClick={this.showDelete}>Delete</a>
-              </p>
-            )}
-          </div>
-        ) : null}
+
+
+
+
+
+
+
+
         </>
         )}
       </div>
