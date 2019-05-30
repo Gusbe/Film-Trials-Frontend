@@ -14,14 +14,14 @@ class Search extends Component {
     this.state = {
       results: [],
       searchParams: {
-        lat: 41.39,
-        lon: 2.17,
-        dist: 25 / 2
+        lat: -42.967645,
+        lon: 171.885557,
+        dist: 1000
       },
       viewport: {
-        latitude: 41.39,
-        longitude: 2.17,
-        zoom: 12,
+        latitude: -42.967645,
+        longitude: 171.885557,
+        zoom: 4,
         bearing: 0,
         pitch: 0,
         width: '100vp',
@@ -32,8 +32,8 @@ class Search extends Component {
         longitude: null
       },
       savePosition: {
-        lon: 2.17,
-        lat: 41.39
+        lon: 171.885557,
+        lat: -42.967645
       },
       detailPosition: {
         lon: null,
