@@ -51,10 +51,28 @@ class SearchMap extends Component {
 
   launchSearch = () => {
 
+    let d = 0;
+    let z = this.state.viewport.zoom;
+    if (z < 2) d = 13000000 / 2;
+    else if (z < 3) d = 10000000 / 2;
+    else if (z < 4) d = 4000000 / 2;
+    else if (z < 5) d = 2700000 / 2;
+    else if (z < 6) d = 1500000 / 2;
+    else if (z < 7) d = 700000 / 2;
+    else if (z < 8) d = 350000 / 2;
+    else if (z < 9) d = 182000 / 2;
+    else if (z < 10) d = 85000 / 2;
+    else if (z < 11) d = 43000 / 2;
+    else if (z < 12) d = 25000 / 2;
+    else if (z < 13) d = 13000 / 2;
+    else if (z < 14) d = 5000 / 2;
+    else if (z < 15) d = 2500 / 2;
+    else if (z < 16) d = 1300 / 2;
+
     const searchParams = {
       lat: this.state.viewport.latitude,
       lon: this.state.viewport.longitude,
-      dist: 30000000
+      dist: d
     }
 
 
