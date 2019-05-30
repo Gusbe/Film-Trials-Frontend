@@ -14,6 +14,7 @@ import UpdateLocation from './pages/UpdateLocation';
 import ViewLocation from './pages/ViewLocation';
 import Search from './pages/Search';
 import SearchMap from './pages/SearchMap';
+import NotFound from './pages/NotFound';
 require('dotenv').config();
 
 
@@ -33,6 +34,7 @@ class App extends Component {
             <Route path="/location/:id" component={ViewLocation}  />
             <Route path="/search/:id" component={Search}  />
             <Route path="/search" component={Search}  />
+            <Route component={NotFound} />
           </Switch>
           <Footer />
         </div>
